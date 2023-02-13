@@ -40,7 +40,7 @@ export const updateProduct = createAsyncThunk(
         access_token: token,
       },
     };
-    console.log(inputs);
+
     const formData = new FormData();
     formData.append("image", inputs.image);
     formData.append("name", inputs.name);
@@ -52,7 +52,9 @@ export const updateProduct = createAsyncThunk(
       formData,
       config
     );
-
+    console.log("ini");
+    console.log(formData);
+    console.log("juga");
     return response.data;
   }
 );

@@ -33,7 +33,7 @@ const EditCard = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(updateProduct(inputs));
-    navigate("/");
+    navigate("/discovery");
   };
 
   return (
@@ -94,6 +94,7 @@ const EditCard = () => {
               <br />
               <input
                 type="file"
+                accept="image/*"
                 name="image"
                 onChange={handleChange}
                 placeholder="Picture"

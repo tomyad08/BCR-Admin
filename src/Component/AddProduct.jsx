@@ -19,7 +19,7 @@ const NewCar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addProduct(inputs));
-    navigate("/");
+    navigate("/discovery");
     console.log(inputs);
   };
 
@@ -80,6 +80,7 @@ const NewCar = () => {
             <br />
             <input
               type="file"
+              accept="image/*"
               name="image"
               value={inputs.image || ""}
               onChange={handleChange}
