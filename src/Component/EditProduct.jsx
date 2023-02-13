@@ -11,7 +11,7 @@ const EditCard = () => {
   const product = useSelector((state) =>
     state.products.products.cars.find((t) => t.id === location.state.id)
   );
-
+  const [image, setImage] = useState(" ");
   const [inputs, setInputs] = useState(
     product
       ? {
@@ -32,10 +32,21 @@ const EditCard = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(updateProduct(inputs));
+    const datas = {
+      id: inputs.id,
+      name: inputs.name,
+      category: inputs.category,
+      image: image,
+      price: inputs.price,
+    };
+    dispatch(updateProduct(datas));
     navigate("/discovery");
   };
 
+  const handleImg = (e) => {
+    setImage(e.target.files[0]);
+  };
+  console.log(image);
   return (
     <>
       <div
@@ -96,7 +107,7 @@ const EditCard = () => {
                 type="file"
                 accept="image/*"
                 name="image"
-                onChange={handleChange}
+                onChange={handleImg}
                 placeholder="Picture"
                 style={{ width: "100%", marginBottom: "10px" }}
               />

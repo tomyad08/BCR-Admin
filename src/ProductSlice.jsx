@@ -47,14 +47,12 @@ export const updateProduct = createAsyncThunk(
     formData.append("category", inputs.category);
     formData.append("price", inputs.price);
     formData.append("status", false);
+
     const response = await axios.put(
       `https://bootcamp-rent-cars.herokuapp.com/admin/car/${inputs.id}`,
       formData,
       config
     );
-    console.log("ini");
-    console.log(formData);
-    console.log("juga");
     return response.data;
   }
 );
@@ -75,6 +73,11 @@ export const addProduct = createAsyncThunk(
     formData.append("category", inputs.category);
     formData.append("price", inputs.price);
     formData.append("status", false);
+
+    console.log("ini1");
+    console.log(formData);
+    console.log("nah1");
+
     const response = await axios.post(
       `https://bootcamp-rent-cars.herokuapp.com/admin/car`,
       formData,

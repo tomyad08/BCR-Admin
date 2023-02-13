@@ -6,6 +6,7 @@ import { addProduct } from "../ProductSlice";
 
 const NewCar = () => {
   const navigate = useNavigate();
+  const [image, setImage] = useState(" ");
   const [inputs, setInputs] = useState(" ");
   const dispatch = useDispatch();
   console.log(inputs);
@@ -18,9 +19,20 @@ const NewCar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addProduct(inputs));
+    const datas = {
+      id: inputs.id,
+      name: inputs.name,
+      category: inputs.category,
+      image: image,
+      price: inputs.price,
+    };
+    dispatch(addProduct(datas));
     navigate("/discovery");
     console.log(inputs);
+  };
+
+  const handleImg = (e) => {
+    setImage(e.target.files[0]);
   };
 
   return (
@@ -82,8 +94,7 @@ const NewCar = () => {
               type="file"
               accept="image/*"
               name="image"
-              value={inputs.image || ""}
-              onChange={handleChange}
+              onChange={handleImg}
               placeholder="Picture"
               style={{ width: "100%", marginBottom: "10px" }}
             />
