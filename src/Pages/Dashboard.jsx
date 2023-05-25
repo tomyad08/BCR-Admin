@@ -27,7 +27,7 @@ const Dashboard = () => {
         <div className="container">
           <DataGraphics />
         </div>
-        <div className="d-flex justify-content-center mt-5">
+        <div className="d-flex justify-content-center my-5">
           <Tabel />
         </div>
       </div>

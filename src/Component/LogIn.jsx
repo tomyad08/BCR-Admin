@@ -47,6 +47,9 @@ const LogIn = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+  const afterLogIn = () => {
+    navigate("/dashboard");
+  };
   return (
     <div
       style={{
@@ -63,13 +66,20 @@ const LogIn = () => {
             <button onClick={handleLogout} className="btn btn-danger mt-3 mx-2">
               Log Out
             </button>
-            <p>Silahkan Log Out</p>
-
-            <span>
-              Jika sudah log-In, tapi belum masuk ke halaman utama, silahkan
-              klik
-            </span>
-            <span onClick={navigate("/dashboard")}> di sini</span>
+            <p className="mx-2">Silahkan Log Out</p>
+            <div className="mx-2">
+              <span>
+                Jika sudah log-In, tapi belum masuk ke halaman utama, silahkan
+                klik
+              </span>
+              <span
+                onClick={afterLogIn}
+                className="border border-2 rounded-2 mx-1 px-2"
+                style={{ backgroundColor: "green", color: "white" }}
+              >
+                di sini
+              </span>
+            </div>
           </div>
         ) : (
           <>

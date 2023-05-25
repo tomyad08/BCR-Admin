@@ -12,9 +12,6 @@ export const fetchDataTabel = createAsyncThunk(
       },
     };
     const response = await axios.get(API.GET_DATA_TABEL, config);
-    console.log("ini");
-    console.log(response);
-    console.log("ini");
     return response.data;
   }
 );

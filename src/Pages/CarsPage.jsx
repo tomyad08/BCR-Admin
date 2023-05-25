@@ -24,7 +24,7 @@ const Cars = () => {
       >
         <h5 style={{ color: "grey", paddingTop: "120px" }}>List Car</h5>
       </div>
-      <div className="flex-10" style={{ marginLeft: "200px" }}>
+      <div style={{ marginLeft: "200px" }}>
         <NavigationHeader condition={true} />
         <FetchProduct props={data} />
       </div>

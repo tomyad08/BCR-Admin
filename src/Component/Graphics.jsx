@@ -54,7 +54,7 @@ const DataGraphics = () => {
       {
         label: "Customer/day",
         data: dataY,
-        backgroundColor: "blue",
+        backgroundColor: "#0D28A6",
         borderColor: "black",
         pointBorderColor: "blue",
       },
@@ -80,10 +80,10 @@ const DataGraphics = () => {
       {products ? (
         <div>
           <h1 className="text-center my-2">Costumer Count Chart</h1>
-          <select onChange={handleYears}>
+          <select className="mx-1 p-1" onChange={handleYears}>
             <option value="2022">2022</option>
           </select>
-          <select onChange={handleMonths}>
+          <select className="mx-1 p-1" onChange={handleMonths}>
             <option value="09"> September</option>
             <option value="10"> October</option>
             <option value="11"> November</option>
