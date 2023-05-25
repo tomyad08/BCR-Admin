@@ -64,6 +64,12 @@ const LogIn = () => {
               Log Out
             </button>
             <p>Silahkan Log Out</p>
+
+            <span>
+              Jika sudah log-In, tapi belum masuk ke halaman utama, silahkan
+              klik
+            </span>
+            <span onClick={navigate("/dashboard")}> di sini</span>
           </div>
         ) : (
           <>
