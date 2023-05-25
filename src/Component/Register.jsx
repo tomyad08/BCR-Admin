@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { API } from "../const/endpoint";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [kondisi, setKondisi] = useState(false);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -19,40 +21,69 @@ const Register = () => {
       role: "Admin",
     };
     axios
-      .post(API.REGISTER, payload)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err.message));
-
-    alert("Register Success");
+      .post(
+        "https://bootcamp-rent-cars.herokuapp.com/admin/auth/register ",
+        payload
+      )
+      .then((res) => {
+        console.log(res);
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setKondisi(!kondisi);
+      });
   };
 
   return (
-    <div style={{ width: "350px" }}>
-      <h2 className="text-center">Register</h2>
-      <input
-        type="email"
-        onChange={handleEmail}
-        placeholder="email"
-        className="mb-2 border border-2 rounded-2"
-        style={{ width: "90%", height: "40px", fontSize: " 20px" }}
-      />
-      <br />
-      <input
-        type="password"
-        onChange={handlePassword}
-        placeholder="password"
-        style={{ width: "90%", height: "40px", fontSize: " 20px" }}
-        className="border border-2 rounded-2"
-      />
-      <br />
-      <button
-        onClick={handleRegis}
-        className="btn btn-primary my-3 px-auto "
-        style={{ width: "30%", fontSize: "20px", marginLeft: "110px" }}
+    <div
+      style={{
+        backgroundImage: "url(./Assets/imageBackground.png)",
+        height: "600px",
+      }}
+    >
+      <div
+        className="float-end"
+        style={{ height: "600px", width: "400px", backgroundColor: "white" }}
       >
-        Register
-      </button>
-      <p className="text-center">*Minimal password 6 karakter</p>
+        <h2 className="mx-4" style={{ paddingTop: "200px" }}>
+          <strong>Welcome Admin BCR</strong>
+        </h2>
+        {kondisi && (
+          <p
+            className="mx-4 p-1"
+            style={{ textAlign: "justify", backgroundColor: "pink" }}
+          >
+            Username yang anda cantumkan telah terdaftar sebelumnya.
+          </p>
+        )}
+        <input
+          type="email"
+          onChange={handleEmail}
+          placeholder="email"
+          className="mb-1 border border-2 mx-4 p-2"
+          style={{ width: "320px", height: "40px", fontSize: " 20px" }}
+        />
+
+        <input
+          type="password"
+          onChange={handlePassword}
+          placeholder="password"
+          style={{ width: "320px", height: "40px", fontSize: " 20px" }}
+          className="border border-2 p-2 mx-4"
+        />
+        <button
+          onClick={handleRegis}
+          className="btn btn-primary my-3 mx-4"
+          style={{ width: "80%", fontSize: "20px" }}
+        >
+          Register
+        </button>
+        <p className="mx-4">*Minimal password 6 karakter</p>
+        <p className="mx-4" style={{ lineHeight: "10px" }}>
+          Sudah memiliki akun? Silahkan langsung <Link to="/login">Log In</Link>
+        </p>
+      </div>
     </div>
   );
 };

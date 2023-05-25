@@ -2,6 +2,37 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API } from "./const/endpoint";
 
+export const fetchDataTabel = createAsyncThunk(
+  "product/fetchDataTabel",
+  async () => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        access_token: token,
+      },
+    };
+    const response = await axios.get(API.GET_DATA_TABEL, config);
+    console.log("ini");
+    console.log(response);
+    console.log("ini");
+    return response.data;
+  }
+);
+
+export const fetchDataGraphics = createAsyncThunk(
+  "product/fetchDataGraphics",
+  async () => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        access_token: token,
+      },
+    };
+    const response = await axios.get(API.GET_DATA_GRAPHICS, config);
+    return response.data;
+  }
+);
+
 export const fetchProduct = createAsyncThunk(
   "product/fetchProduct",
   async () => {
@@ -92,9 +123,17 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
+    dataGraphics: [],
+    dataTabel: [],
   },
   reducers: {},
   extraReducers: {
+    [fetchDataTabel.fulfilled]: (state, action) => {
+      state.dataTabel = action.payload;
+    },
+    [fetchDataGraphics.fulfilled]: (state, action) => {
+      state.dataGraphics = action.payload;
+    },
     [fetchProduct.fulfilled]: (state, action) => {
       state.products = action.payload;
     },

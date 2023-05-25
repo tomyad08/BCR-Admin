@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API } from "../const/endpoint";
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
@@ -9,26 +8,30 @@ const LogIn = () => {
   const [isLogin, setIsLogin] = useState(false);
 
   const navigate = useNavigate();
-
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  const handleRegis = () => {
+  const handleLogIn = () => {
     const payload = {
       email: email,
       password: password,
     };
     axios
-      .post(API.LOGIN, payload)
+      .post(
+        "https://bootcamp-rent-cars.herokuapp.com/admin/auth/login",
+        payload
+      )
       .then((res) => {
         localStorage.setItem("token", res.data.access_token);
-        navigate("/discovery");
+        navigate("/dashboard");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        console.log(err.message);
+        alert("gagal");
+      });
   };
 
   useEffect(() => {
@@ -38,53 +41,63 @@ const LogIn = () => {
     } else {
       setIsLogin(true);
     }
-  });
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    navigate("/");
   };
   return (
-    <div style={{ width: "350px" }}>
-      {isLogin ? (
-        <div>
-          <button onClick={handleLogout} className="btn btn-danger mt-3 mx-2">
-            Log Out
-          </button>
-          <p>
-            Silahkan klik Log out dan refresh untuk memastikan anda telah Log
-            Out
-          </p>
-        </div>
-      ) : (
-        <>
+    <div
+      style={{
+        backgroundImage: "url(./Assets/imageBackground.png)",
+        height: "600px",
+      }}
+    >
+      <div
+        className="float-end"
+        style={{ height: "600px", width: "400px", backgroundColor: "white" }}
+      >
+        {isLogin ? (
           <div>
-            <h2 className="text-center">Log In</h2>
-            <input
-              type="email"
-              onChange={handleEmail}
-              placeholder="email"
-              className="mb-2 mx-2 border border-2 rounded"
-              style={{ width: "90%", height: "40px", fontSize: " 20px" }}
-            />
-            <br />
-            <input
-              type="password"
-              onChange={handlePassword}
-              placeholder="password"
-              className="mx-2 border border-2 rounded"
-              style={{ width: "90%", height: "40px", fontSize: " 20px" }}
-            />
-            <br />
-            <button
-              onClick={handleRegis}
-              className="btn btn-success my-3 px-auto"
-              style={{ width: "30%", fontSize: "20px", marginLeft: "110px" }}
-            >
-              LogIn
+            <button onClick={handleLogout} className="btn btn-danger mt-3 mx-2">
+              Log Out
             </button>
+            <p>Silahkan Log Out</p>
           </div>
-        </>
-      )}
+        ) : (
+          <>
+            <div>
+              <h2 className="mx-4" style={{ paddingTop: "200px" }}>
+                <strong>Welcome Admin BCR</strong>
+              </h2>
+              <input
+                type="email"
+                onChange={handleEmail}
+                placeholder="email"
+                className="mb-1 p-2 mx-4 border border-2"
+                style={{ width: "320px", height: "40px", fontSize: " 20px" }}
+              />
+              <br />
+              <input
+                type="password"
+                onChange={handlePassword}
+                placeholder="password"
+                className="mx-4 p-2 border border-2"
+                style={{ width: "320px", height: "40px", fontSize: " 20px" }}
+              />
+
+              <button
+                onClick={handleLogIn}
+                className="btn btn-primary mx-4 my-3 px-auto"
+                style={{ width: "80%", fontSize: "20px" }}
+              >
+                LogIn
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
