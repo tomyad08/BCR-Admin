@@ -8,12 +8,12 @@ const Cars = () => {
   const location = useLocation();
   const data = location.state;
   return (
-    <div className="d-flex">
-      <div className="flex-1" style={{ position: "fixed" }}>
+    <div>
+      <div style={{ position: "fixed" }}>
         <NavigationBar />
       </div>
       <div
-        className="flex-1 px-1 py-1"
+        className=" px-1 py-1"
         style={{
           backgroundColor: "white",
           height: "600px",

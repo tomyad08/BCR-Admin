@@ -33,9 +33,9 @@ const FetchProduct = (props) => {
   console.log(props.props);
 
   return (
-    <div className="container-fluid" style={{ backgroundColor: "#E5E5E5" }}>
+    <div style={{ backgroundColor: "#E5E5E5" }}>
       <div className="row mx-2 my-2 ">
-        <div className="col py-3">
+        <div className="col-10 py-3">
           <h3>List Car</h3>
           <span
             className="p-2 me-2 border border-1 rounded-2 border-primary"

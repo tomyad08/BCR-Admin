@@ -5,7 +5,7 @@ const NavigationHeader = (props) => {
   const [search, setSearch] = useState(" ");
   const navigate = useNavigate();
   const handleSearch = () => {
-    navigate("/discovery-page", {
+    navigate("/cars", {
       state: search,
     });
   };
