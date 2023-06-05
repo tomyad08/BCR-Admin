@@ -21,26 +21,25 @@ const NavigationHeader = (props) => {
         </div>
         <div className="float-end">
           {props.condition && (
-            <div
-              className="border border-1 border-dark"
-              style={{ backgroundColor: "#0D28A6" }}
-            >
-              <span>
+            <div>
+              <div className="input-group border-0">
                 <input
-                  type="text"
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Enter Car Name"
-                  style={{ width: "150px", backgroundColor: "white" }}
-                  className="border border-0  px-2"
+                  type="text"
+                  className="form-control"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="button-addon2"
                 />
-              </span>
-              <span
-                className="p-1"
-                style={{ color: "white" }}
-                onClick={handleSearch}
-              >
-                Search
-              </span>
+                <button
+                  className="btn btn-outline-primary me-4"
+                  onClick={handleSearch}
+                  type="button"
+                  id="button-addon2"
+                >
+                  Search
+                </button>
+              </div>
             </div>
           )}
         </div>

@@ -30,8 +30,6 @@ const FetchProduct = (props) => {
     });
   };
 
-  console.log(props.props);
-
   return (
     <div style={{ backgroundColor: "#E5E5E5" }}>
       <div className="row mx-2 my-2 ">
@@ -112,7 +110,7 @@ const FetchProduct = (props) => {
                   <img src={value.image} alt=" " width="100%" />
                 </div>
                 <h6 className="px-2" style={{ lineHeight: "20px" }}>
-                  {value.name.toUpperCase()}
+                  {value?.name?.toUpperCase()}
                 </h6>
                 <p className="px-2" style={{ lineHeight: "10px" }}>
                   <strong>Rp. {NumberWithCommas(value.price)}/hari</strong>

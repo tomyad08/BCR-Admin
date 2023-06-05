@@ -31,7 +31,14 @@ const EditCardPage = () => {
         >
           <NavigationHeader />
         </div>
-        <div style={{ marginTop: "50px" }}>
+        <div
+          className="px-5 py-2"
+          style={{
+            marginTop: "50px",
+            width: "1050px",
+            backgroundColor: "#E5E5E5",
+          }}
+        >
           <EditCard />
         </div>
       </div>

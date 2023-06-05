@@ -1,0 +1,124 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.back-transparan {
+    background: rgba(6, 3, 46, 0.712); 
+}
+.background-login {
+    width: 100%;
+    height: 100vh;
+}
+.logo-login {
+    position: relative;
+    width: 100px;
+    height: 34px;
+    background: #CFD4ED;
+}
+
+.welcome {
+    font-family: 'Arial';
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+    font-weight: 800;
+}
+
+.label-admin {
+    font-family: 'Arial';
+    font-size: 14px;
+    line-height: 20px;
+    color: #222222;
+}
+
+.text-alert {
+    background: rgb(241, 206, 212);
+    color: rgb(175, 57, 57);
+    border-radius: 10px;
+}
+
+.sidebar {
+    background-color: #0D28A6;
+    height: 100vh;
+}
+
+.sidebar-active {
+    background: #ffffff47;
+}
+
+.inisial-admin {
+    background: #CFD4ED;
+    height: 38px;
+    width: 38px;
+}
+
+.logo-admin {
+    width: 40px;
+    height: 40px;
+    background-color: #E5E5E5;
+    margin-bottom: 30px;
+}
+
+.menu {
+    background: white;
+    /* padding-left: 0px; */
+}
+
+.menu-list {
+    margin-top: 30px;
+    width: 200px;
+    padding: 9px 24px 9px 24px;
+    margin-bottom: 19px;
+}
+
+.menu-item {
+    width: 200px;
+    padding: 9px 24px 9px 24px;
+    background-color: #CFD4ED;
+}
+
+.content {
+    padding-left: 25px;
+}
+
+.breadcrumbs {
+    margin-bottom: 27px;
+}
+
+.product-wrapper{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(351px, 1fr) ) ;
+    /* background-color: #fff;
+    color: #444; */
+}
+
+.product-item {
+    height: 482px;
+}
+
+.rectangle-mini {
+    width: 4px;
+    height: 24px;
+    background: #0D28A6;
+}
+
+.pagination.react-bootstrap-table-page-btns-ul{
+    float: right;
+}
+
+.btn.btn-default.btn-secondary.dropdown-toggle{
+    background: white;
+    color: grey;
+}
+
+th {
+    background: #CFD4ED !important;
+}
+
+th.sortable .order {
+    float: right;
+    width: 5%;
+    background-image: url(../img/fi_sort.png);
+}

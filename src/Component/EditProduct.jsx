@@ -49,73 +49,128 @@ const EditCard = () => {
 
   return (
     <>
-      <div style={{ width: "100%", backgroundColor: "white" }}>
-        <form onSubmit={handleSubmit}>
-          <h1>Edit</h1>
-          <input
-            type="text"
-            name="name"
-            value={inputs.name}
-            onChange={handleChange}
-            placeholder="Nama Mobil"
-            style={{ width: "100%", marginBottom: "10px" }}
-            className="border border-2 rounded-1 p-2"
-          />
+      <div>
+        <div className="breadcrumbs d-flex mt-4 pt-2">
+          <h5 className="mb-0">Cars</h5>
+          <span className="mb-0">&nbsp; > &nbsp;</span>
+          <p className="mb-0">List Car</p>
+          <span>&nbsp; > &nbsp;</span>
+          <p className="mb-0">Edit Car</p>
+        </div>
+        <h1 className="mb-3">Edit Car</h1>
+        <div
+          className="p-3 rounded"
+          style={{ width: "100%", backgroundColor: "white" }}
+        >
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-md-2">
+                <label htmlFor="">Nama*</label>
+              </div>
+              <div className="col-md-5">
+                <input
+                  type="text"
+                  name="name"
+                  value={inputs.name}
+                  onChange={handleChange}
+                  placeholder="Nama Mobil"
+                  style={{ width: "100%", marginBottom: "10px" }}
+                  className="border border-2 rounded-1 p-2"
+                />
+              </div>
+            </div>
 
-          <br />
+            <div className="row">
+              <div className="col-md-2">
+                <label htmlFor="">Harga*</label>
+              </div>
+              <div className="col-md-5">
+                <input
+                  type="number"
+                  name="price"
+                  value={inputs.price}
+                  onChange={handleChange}
+                  placeholder={inputs.price}
+                  style={{ width: "100%", marginBottom: "10px" }}
+                  className="border border-2 rounded-1 p-2"
+                />
+              </div>
+            </div>
 
-          <select
-            type="select"
-            name="kategori"
-            onChange={handleChange}
-            style={{ width: "100%", marginBottom: "10px" }}
-            className="border border-2 rounded-1 p-2"
-          >
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
+            <div className="row">
+              <div className="col-md-2">
+                <label htmlFor="">Foto*</label>
+              </div>
+              <div className="col-md-5">
+                <input
+                  className="form-control"
+                  type="file"
+                  accept="image/*"
+                  name="image"
+                  onChange={handleImg}
+                  placeholder="Picture"
+                  style={{ width: "100%", marginBottom: "10px" }}
+                />
+                <p>File size max. 2MB</p>
+              </div>
+            </div>
 
-          <br />
+            <div className="row">
+              <div className="col-md-2">
+                <label htmlFor="">Kategori*</label>
+              </div>
+              <div className="col-md-5">
+                <select
+                  type="select"
+                  name="kategori"
+                  onChange={handleChange}
+                  style={{ width: "100%", marginBottom: "10px" }}
+                  className="border border-2 rounded-1 p-2"
+                >
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </div>
+            </div>
 
-          <input
-            type="number"
-            name="price"
-            value={inputs.price}
-            onChange={handleChange}
-            placeholder={inputs.price}
-            style={{ width: "100%", marginBottom: "10px" }}
-            className="border border-2 rounded-1 p-2"
-          />
+            <div className="row">
+              <div className="col-md-2">
+                <label htmlFor="">Created at</label>
+              </div>
+              <div className="col-md-5">-</div>
+            </div>
 
-          <br />
-          <input
-            type="file"
-            accept="image/*"
-            name="image"
-            onChange={handleImg}
-            placeholder="Picture"
-            style={{ width: "100%", marginBottom: "10px" }}
-          />
+            <div className="row">
+              <div className="col-md-2">
+                <label htmlFor="">Updated at</label>
+              </div>
+              <div className="col-md-5">-</div>
+            </div>
 
-          <br />
-
-          <div className="d-flex justify-content-around pt-5">
-            <Link to="/discovery-page">
-              <button
-                className="btn btn-danger"
+            <div className="d-flex mt-5">
+              <Link to="/discovery-page">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary me-2"
+                  style={{
+                    width: "100px",
+                    marginBottom: "10px",
+                    background: "white",
+                  }}
+                >
+                  Cancel
+                </button>
+              </Link>
+              <input
+                type="submit"
+                className="btn btn-primary"
+                value="Save"
                 style={{ width: "100px", marginBottom: "10px" }}
-              >
-                cancel
-              </button>
-            </Link>
-            <input
-              type="submit"
-              className="btn btn-success"
-              style={{ width: "100px", marginBottom: "10px" }}
-            />
-          </div>
-        </form>
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

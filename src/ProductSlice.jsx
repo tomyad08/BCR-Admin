@@ -68,7 +68,7 @@ export const updateProduct = createAsyncThunk(
         access_token: token,
       },
     };
-
+    console.log("ini data updateProduct", inputs);
     const formData = new FormData();
     formData.append("image", inputs.image);
     formData.append("name", inputs.name);
@@ -77,7 +77,7 @@ export const updateProduct = createAsyncThunk(
     formData.append("status", false);
 
     const response = await axios.put(
-      `https://bootcamp-rent-cars.herokuapp.com/admin/car/${inputs.id}`,
+      API.EDIT_CARS + `/${inputs.id}`,
       formData,
       config
     );
@@ -94,7 +94,6 @@ export const addProduct = createAsyncThunk(
         access_token: token,
       },
     };
-    console.log(inputs);
     const formData = new FormData();
     formData.append("image", inputs.image);
     formData.append("name", inputs.name);
@@ -102,15 +101,7 @@ export const addProduct = createAsyncThunk(
     formData.append("price", inputs.price);
     formData.append("status", false);
 
-    console.log("ini1");
-    console.log(formData);
-    console.log("nah1");
-
-    const response = await axios.post(
-      `https://bootcamp-rent-cars.herokuapp.com/admin/car`,
-      formData,
-      config
-    );
+    const response = await axios.post(API.POST_CARS, formData, config);
 
     return response.data;
   }
@@ -145,7 +136,8 @@ const productSlice = createSlice({
       );
     },
     [addProduct.fulfilled]: (state, action) => {
-      state.products.push(action.payload);
+      state?.products?.push(action.payload);
+      console.log("data", state);
     },
   },
 });
