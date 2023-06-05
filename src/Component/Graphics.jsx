@@ -26,7 +26,7 @@ const DataGraphics = () => {
   const [month, setMonth] = useState(" ");
   const [year, setYear] = useState(" ");
   const dispatch = useDispatch();
-  console.log(products);
+
   useEffect(() => {
     dispatch(fetchDataGraphics());
   }, [dispatch]);

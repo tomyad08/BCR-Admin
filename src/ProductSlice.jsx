@@ -136,8 +136,7 @@ const productSlice = createSlice({
       );
     },
     [addProduct.fulfilled]: (state, action) => {
-      state?.products?.push(action.payload);
-      console.log("data", state);
+      state.products.push(action.payload);
     },
   },
 });
