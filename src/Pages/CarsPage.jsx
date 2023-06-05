@@ -8,25 +8,30 @@ const Cars = () => {
   const location = useLocation();
   const data = location.state;
   return (
-    <div>
-      <div style={{ position: "fixed" }}>
-        <NavigationBar />
-      </div>
-      <div
-        className=" px-1 py-1"
-        style={{
-          backgroundColor: "white",
-          height: "600px",
-          width: "100px",
-          marginLeft: "100px",
-          position: "fixed",
-        }}
-      >
-        <h5 style={{ color: "grey", paddingTop: "120px" }}>List Car</h5>
-      </div>
-      <div style={{ marginLeft: "200px" }}>
+    <div className="d-flex">
+      <NavigationBar />
+      <div className="w-100">
         <NavigationHeader condition={true} />
-        <FetchProduct props={data} />
+        <div className="container-fluid d-flex ps-0" style={{ backgroundColor: "#E5E5E5", height: "100%" }}>
+          <div className="menu">
+            <h5 className="menu-list" style={{ color: "grey" }}>
+              DASHBOARD
+            </h5>
+            <h5 className="menu-item">Dashboard</h5>
+          </div>
+          <div className="content w-100">
+            <div className="row">
+              <div className="col pb-1">
+                <div className="breadcrumbs d-flex mt-4 pt-2">
+                  <h5>Cars</h5>
+                  <span>&nbsp; > &nbsp;</span>
+                  <p className="mb-2">List Car</p>
+                </div>
+              </div>
+            </div>
+            <FetchProduct props={data} />
+          </div>
+        </div>
       </div>
     </div>
   );

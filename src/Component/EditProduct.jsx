@@ -149,7 +149,7 @@ const EditCard = () => {
             </div>
 
             <div className="d-flex mt-5">
-              <Link to="/discovery-page">
+              <Link to="/cars">
                 <button
                   type="button"
                   className="btn btn-outline-primary me-2"

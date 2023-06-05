@@ -1,4 +1,5 @@
 import "./App.css";
+import "./Assets/css/cms.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./Protected/ProtectedRoute";
 import Register from "./Component/Register";

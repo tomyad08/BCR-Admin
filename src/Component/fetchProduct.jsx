@@ -32,39 +32,11 @@ const FetchProduct = (props) => {
 
   return (
     <div style={{ backgroundColor: "#E5E5E5" }}>
-      <div className="row mx-2 my-2 ">
-        <div className="col-10 py-3">
-          <h3>List Car</h3>
-          <span
-            className="p-2 me-2 border border-1 rounded-2 border-primary"
-            onClick={() => setKategori(" ")}
-            id="menuKategori"
-          >
-            All
-          </span>
-          <span
-            className="p-2 mx-2 border border-1 rounded-2 border-primary"
-            onClick={() => setKategori("small")}
-            id="menuKategori"
-          >
-            2 - 4 people
-          </span>
-          <span
-            className="p-2 mx-2 border border-1 rounded-2 border-primary"
-            onClick={() => setKategori("medium")}
-            id="menuKategori"
-          >
-            4 - 6 people
-          </span>
-          <span
-            className="p-2 mx-2 border border-1 rounded-2 border-primary"
-            onClick={() => setKategori("large")}
-            id="menuKategori"
-          >
-            6 - 8 people
-          </span>
+      <div className="row mb-4">
+        <div className="col">
+          <h3 className="mb-0">List Car</h3>
         </div>
-        <div className="col py-5">
+        <div className="col">
           <Link to="/add">
             <button
               className="btn float-end"
@@ -75,8 +47,38 @@ const FetchProduct = (props) => {
           </Link>
         </div>
       </div>
+      <div className="mb-4"> 
+        <span
+          className="p-2 me-2 border border-1 rounded-2 border-primary"
+          onClick={() => setKategori(" ")}
+          id="menuKategori"
+        >
+          All
+        </span>
+        <span
+          className="p-2 mx-2 border border-1 rounded-2 border-primary"
+          onClick={() => setKategori("small")}
+          id="menuKategori"
+        >
+          2 - 4 people
+        </span>
+        <span
+          className="p-2 mx-2 border border-1 rounded-2 border-primary"
+          onClick={() => setKategori("medium")}
+          id="menuKategori"
+        >
+          4 - 6 people
+        </span>
+        <span
+          className="p-2 mx-2 border border-1 rounded-2 border-primary"
+          onClick={() => setKategori("large")}
+          id="menuKategori"
+        >
+          6 - 8 people
+        </span>
+      </div>
 
-      <div className="row mx-2">
+      <div className="product-wrapper">
         {products
           .filter((value) => {
             if (kategori === " ") {
@@ -95,42 +97,43 @@ const FetchProduct = (props) => {
             }
           })
           .map((value) => (
-            <div key={value.id} className="col-md-3 mb-3">
+            <div key={value.id} className="mb-3">
               <div
-                className="border border-2 rounded-2 "
+                className="border border-2 rounded-2  product-item p-4"
                 style={{ backgroundColor: "white" }}
               >
-                <div
+                <div className="mb-3"
                   style={{
                     width: "100%",
-                    height: "150px",
+                    height: "222px",
                     overflow: "hidden",
                   }}
                 >
                   <img src={value.image} alt=" " width="100%" />
                 </div>
-                <h6 className="px-2" style={{ lineHeight: "20px" }}>
+                <h6 className="" style={{ lineHeight: "20px" }}>
                   {value?.name?.toUpperCase()}
                 </h6>
-                <p className="px-2" style={{ lineHeight: "10px" }}>
+                <p className="mb-3" style={{ lineHeight: "10px" }}>
                   <strong>Rp. {NumberWithCommas(value.price)}/hari</strong>
                 </p>
-                <div className="px-2">
+                <div className="mb-3">
                   <span className="pe-2">
                     <img src="./Assets/fi_users.png" alt=" " />
                   </span>
                   <span>{value.category}</span>
                 </div>
-                <div className="px-2">
-                  <p>Updated At: {value.updatedAt.substring(0, 10)}</p>
+                <div className="mb-4">
+                  <p className="mb-0">Updated At: {value.updatedAt.substring(0, 10)}</p>
                 </div>
-                <div className="row justify-content-around mb-2">
+                <div className="d-flex flex-row gap-10 justify-content-between">
                   <button
                     onClick={() => {
                       setID(value.id);
                       setModalShow(true);
                     }}
-                    className="btn px-1 py-1 col-4 border border-2 border-danger text-center"
+                    style={{ width: "48%", height: "48px" }}
+                    className="btn col-4 border border-2 border-danger text-center"
                   >
                     <span className="mx-1">
                       <img src="./Assets/fi_trash-2.png" alt=" " width="13px" />
@@ -139,7 +142,7 @@ const FetchProduct = (props) => {
                   </button>
                   <button
                     onClick={() => handleEdit(value)}
-                    className="btn px-1 py-1 col-4 border border-0 text-center"
+                    className="btn col-4 border border-0 text-center"
                     style={{ backgroundColor: "#5CB85F" }}
                   >
                     <span className="mx-1 ">

@@ -26,7 +26,6 @@ const DataGraphics = () => {
   const [month, setMonth] = useState(" ");
   const [year, setYear] = useState(" ");
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchDataGraphics());
   }, [dispatch]);
@@ -79,7 +78,6 @@ const DataGraphics = () => {
     <div>
       {products ? (
         <div>
-          <h1 className="text-center my-2">Costumer Count Chart</h1>
           <select className="mx-1 p-1" onChange={handleYears}>
             <option value="2022">2022</option>
           </select>

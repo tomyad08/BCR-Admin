@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import backLogin from "../Assets/img/backgroundLogin.png"
 
 const Register = () => {
   const navigate = useNavigate();
@@ -36,53 +37,53 @@ const Register = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: "url(./Assets/imageBackground.png)",
-        height: "600px",
-      }}
-    >
-      <div
-        className="float-end"
-        style={{ height: "600px", width: "400px", backgroundColor: "white" }}
-      >
-        <h2 className="mx-4" style={{ paddingTop: "200px" }}>
-          <strong>Welcome Admin BCR</strong>
-        </h2>
-        {kondisi && (
-          <p
-            className="mx-4 p-1"
-            style={{ textAlign: "justify", backgroundColor: "pink" }}
-          >
-            Username yang anda cantumkan telah terdaftar sebelumnya.
-          </p>
-        )}
-        <input
-          type="email"
-          onChange={handleEmail}
-          placeholder="email"
-          className="mb-1 border border-2 mx-4 p-2"
-          style={{ width: "320px", height: "40px", fontSize: " 20px" }}
-        />
+    <div className="row m-0">
+      <div className="col-lg-8 px-0 back-transparan">
+        <img src={backLogin} className="background-login" alt="" srcset="" />
+      </div>
+      <div className="col-lg-4 px-5 my-auto">
+      
+          <>
+            <div>
+              <div className="logo-login mb-4"></div>
+              <h2 className="welcome">Welcome, Admin BCR</h2>
+              {kondisi && (
+                <p className="text-alert p-2 my-3">
+                  Username yang anda cantumkan telah terdaftar sebelumnya.
+                </p>
+              )}
+              <div>
+                <label htmlFor="email" className="label-login mb-1">Email</label>
+                <input
+                  type="email"
+                  onChange={handleEmail}
+                  placeholder="Contoh: johndee@gmail.com"
+                  className="form-control mb-3"
+                />
+              </div>
 
-        <input
-          type="password"
-          onChange={handlePassword}
-          placeholder="password"
-          style={{ width: "320px", height: "40px", fontSize: " 20px" }}
-          className="border border-2 p-2 mx-4"
-        />
-        <button
-          onClick={handleRegis}
-          className="btn btn-primary my-3 mx-4"
-          style={{ width: "80%", fontSize: "20px" }}
-        >
-          Register
-        </button>
-        <p className="mx-4">*Minimal password 6 karakter</p>
-        <p className="mx-4" style={{ lineHeight: "10px" }}>
-          Sudah memiliki akun? Silahkan langsung <Link to="/login">Log In</Link>
-        </p>
+              <div>
+                <label htmlFor="password" className="label-login mb-1">Password</label>
+                <input
+                  type="password"
+                  onChange={handlePassword}
+                  placeholder="6+ karakter"
+                  className="form-control mb-4"
+                />
+              </div>
+
+              <button
+                onClick={handleRegis}
+                className="btn btn-primary w-100"
+              >
+                Register
+              </button>
+            </div>
+            <p className="mt-3">*Minimal password 6 karakter</p>
+            <p className="">
+              Sudah memiliki akun? Silahkan langsung <Link to="/login">Log In</Link>
+            </p>
+          </>
       </div>
     </div>
   );

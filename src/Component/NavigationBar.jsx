@@ -1,31 +1,30 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+
+const navigation = [
+  { name: 'Dashboard', href: '/dashboard', current: true, value: './Assets/Home.png' },
+  { name: 'Cars', href: '/cars', current: false, value: './Assets/Administrator.png' }
+]
 
 const NavigationBar = () => {
-  const navigate = useNavigate();
-  const handleDashboard = () => {
-    navigate("/dashboard");
-  };
-  const handleAdministrator = () => {
-    navigate("/cars");
-  };
   return (
-    <div className="d-flex">
-      <div
-        className="px-3 py-1"
-        style={{ backgroundColor: "#0D28A6", height: "600px", width: "100px" }}
-      >
-        <div
-          style={{ width: "97%", height: "40px", backgroundColor: "#E5E5E5" }}
-        ></div>
-        <img src="./Assets/Home.png" alt=" " onClick={handleDashboard} />
-        <img
-          src="./Assets/Administrator.png"
-          alt=" "
-          onClick={handleAdministrator}
-        />
+      <div className="py-1 sidebar d-flex flex-column align-items-center" >
+        <div className="logo-admin"></div>
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className={({isActive}) => {
+                return (
+                  (isActive ? 'sidebar-active':'')
+                )
+              }}
+            >
+              <img className="sidebar-item" src={item.value} alt=" " />
+            </NavLink>
+          ))}
       </div>
-    </div>
   );
 };
 export default NavigationBar;

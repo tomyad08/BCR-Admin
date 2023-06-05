@@ -34,22 +34,21 @@ const Tabel = () => {
     <div>
       {pagination ? (
         <div>
-          <h1 className="text-center mt-2">Customer Data</h1>
-          <table>
-            <thead>
-              <tr
-                className="border border-2 border-dark p-1"
-                style={{ backgroundColor: "#0D28A6", color: "white" }}
-              >
-                <th className="border border-2 p-1 border-dark">No</th>
-                <th className="border border-2 p-1 border-dark">User Email</th>
-                <th className="border border-2 p-1 border-dark">Car</th>
-                <th className="border border-2 p-1 border-dark">Start Rent</th>
-                <th className="border border-2 p-1 border-dark">Finish Rent</th>
-                <th className="border border-2 p-1 border-dark">Price</th>
-                <th className="border border-2 p-1 border-dark">Category</th>
-              </tr>
-            </thead>
+          <table style={{ width: "98%", background: "white", border: "none" }}>
+          <thead>
+            <tr
+              className="border border-2 border-dark p-1"
+              style={{ backgroundColor: "#0D28A6", color: "white" }}
+            >
+              <th className="border border-2 p-1 border-dark">No</th>
+              <th className="border border-2 p-1 border-dark">User Email</th>
+              <th className="border border-2 p-1 border-dark">Car</th>
+              <th className="border border-2 p-1 border-dark">Start Rent</th>
+              <th className="border border-2 p-1 border-dark">Finish Rent</th>
+              <th className="border border-2 p-1 border-dark">Price</th>
+              <th className="border border-2 p-1 border-dark">Category</th>
+            </tr>
+          </thead>
 
             {pagination.map((value) => (
               <tr className="border border-2 p-1">
@@ -78,7 +77,9 @@ const Tabel = () => {
           <div className="float-start">
             <label>Limit:</label>
             <br />
-            <select onChange={(e) => handleChange(e.target.value)}>
+            <select className="btn"
+              style={{ background: "white", color: "black" }}
+              onChange={(e) => handleChange(e.target.value)}>
               <option value="5">5</option>
               <option value="10">10</option>
             </select>
