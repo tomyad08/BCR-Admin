@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import backLogin from "../Assets/img/backgroundLogin.png"
+import backLogin from "../Assets/img/backgroundLogin.png";
+import { API } from "../const/endpoint";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -22,10 +23,7 @@ const Register = () => {
       role: "Admin",
     };
     axios
-      .post(
-        "https://bootcamp-rent-cars.herokuapp.com/admin/auth/register ",
-        payload
-      )
+      .post(API.REGISTER, payload)
       .then((res) => {
         console.log(res);
         navigate("/login");
@@ -42,48 +40,49 @@ const Register = () => {
         <img src={backLogin} className="background-login" alt="" srcset="" />
       </div>
       <div className="col-lg-4 px-5 my-auto">
-      
-          <>
+        <>
+          <div>
+            <div className="logo-login mb-4"></div>
+            <h2 className="welcome">Welcome, Admin BCR</h2>
+            {kondisi && (
+              <p className="text-alert p-2 my-3">
+                Username yang anda cantumkan telah terdaftar sebelumnya.
+              </p>
+            )}
             <div>
-              <div className="logo-login mb-4"></div>
-              <h2 className="welcome">Welcome, Admin BCR</h2>
-              {kondisi && (
-                <p className="text-alert p-2 my-3">
-                  Username yang anda cantumkan telah terdaftar sebelumnya.
-                </p>
-              )}
-              <div>
-                <label htmlFor="email" className="label-login mb-1">Email</label>
-                <input
-                  type="email"
-                  onChange={handleEmail}
-                  placeholder="Contoh: johndee@gmail.com"
-                  className="form-control mb-3"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password" className="label-login mb-1">Password</label>
-                <input
-                  type="password"
-                  onChange={handlePassword}
-                  placeholder="6+ karakter"
-                  className="form-control mb-4"
-                />
-              </div>
-
-              <button
-                onClick={handleRegis}
-                className="btn btn-primary w-100"
-              >
-                Register
-              </button>
+              <label htmlFor="email" className="label-login mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                onChange={handleEmail}
+                placeholder="Contoh: johndee@gmail.com"
+                className="form-control mb-3"
+              />
             </div>
-            <p className="mt-3">*Minimal password 6 karakter</p>
-            <p className="">
-              Sudah memiliki akun? Silahkan langsung <Link to="/login">Log In</Link>
-            </p>
-          </>
+
+            <div>
+              <label htmlFor="password" className="label-login mb-1">
+                Password
+              </label>
+              <input
+                type="password"
+                onChange={handlePassword}
+                placeholder="6+ karakter"
+                className="form-control mb-4"
+              />
+            </div>
+
+            <button onClick={handleRegis} className="btn btn-primary w-100">
+              Register
+            </button>
+          </div>
+          <p className="mt-3">*Minimal password 6 karakter</p>
+          <p className="">
+            Sudah memiliki akun? Silahkan langsung{" "}
+            <Link to="/login">Log In</Link>
+          </p>
+        </>
       </div>
     </div>
   );

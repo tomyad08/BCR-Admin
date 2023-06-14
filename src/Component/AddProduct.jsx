@@ -25,6 +25,7 @@ const NewCar = () => {
       price: inputs.price,
     };
     dispatch(addProduct(datas));
+    console.log("ini", datas);
     navigate("/cars");
   };
 

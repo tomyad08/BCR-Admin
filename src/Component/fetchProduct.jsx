@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 
 const FetchProduct = (props) => {
   const products = useSelector((state) => state.products.products.cars);
+  console.log(products);
   const [kategori, setKategori] = useState(" ");
   const [modalShow, setModalShow] = useState(false);
   const [ID, setID] = useState(" ");
@@ -47,7 +48,7 @@ const FetchProduct = (props) => {
           </Link>
         </div>
       </div>
-      <div className="mb-4"> 
+      <div className="mb-4">
         <span
           className="p-2 me-2 border border-1 rounded-2 border-primary"
           onClick={() => setKategori(" ")}
@@ -102,7 +103,8 @@ const FetchProduct = (props) => {
                 className="border border-2 rounded-2  product-item p-4"
                 style={{ backgroundColor: "white" }}
               >
-                <div className="mb-3"
+                <div
+                  className="mb-3"
                   style={{
                     width: "100%",
                     height: "222px",
@@ -124,7 +126,9 @@ const FetchProduct = (props) => {
                   <span>{value.category}</span>
                 </div>
                 <div className="mb-4">
-                  <p className="mb-0">Updated At: {value.updatedAt.substring(0, 10)}</p>
+                  <p className="mb-0">
+                    Updated At: {value.updatedAt.substring(0, 10)}
+                  </p>
                 </div>
                 <div className="d-flex flex-row gap-10 justify-content-between">
                   <button

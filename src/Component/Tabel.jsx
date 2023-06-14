@@ -8,6 +8,7 @@ const Tabel = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
     dispatch(fetchDataTabel());
@@ -16,13 +17,9 @@ const Tabel = () => {
   const pageCount = products ? Math.ceil(products.length / pageSize) : 0;
   const pages = _.range(1, pageCount + 1);
 
-  let pagination;
-  pagination = _(products).slice(0).take(pageSize).value();
-
   const paginationValue = (value) => {
     setCurrentPage(value);
-    const startIndex = (value - 1) * pageSize;
-    pagination = _(products).slice(startIndex).take(pageSize).value();
+    setStartIndex((value - 1) * pageSize);
   };
 
   const handleChange = (value) => {
@@ -30,27 +27,30 @@ const Tabel = () => {
     setPageSize(number);
   };
 
+  let pag;
+  pag = _(products).slice(startIndex).take(pageSize).value();
+
   return (
     <div>
-      {pagination ? (
+      {pag ? (
         <div>
           <table style={{ width: "98%", background: "white", border: "none" }}>
-          <thead>
-            <tr
-              className="border border-2 border-dark p-1"
-              style={{ backgroundColor: "#0D28A6", color: "white" }}
-            >
-              <th className="border border-2 p-1 border-dark">No</th>
-              <th className="border border-2 p-1 border-dark">User Email</th>
-              <th className="border border-2 p-1 border-dark">Car</th>
-              <th className="border border-2 p-1 border-dark">Start Rent</th>
-              <th className="border border-2 p-1 border-dark">Finish Rent</th>
-              <th className="border border-2 p-1 border-dark">Price</th>
-              <th className="border border-2 p-1 border-dark">Category</th>
-            </tr>
-          </thead>
+            <thead>
+              <tr
+                className="border border-2 border-dark p-1"
+                style={{ backgroundColor: "#0D28A6", color: "white" }}
+              >
+                <th className="border border-2 p-1 border-dark">No</th>
+                <th className="border border-2 p-1 border-dark">User Email</th>
+                <th className="border border-2 p-1 border-dark">Car</th>
+                <th className="border border-2 p-1 border-dark">Start Rent</th>
+                <th className="border border-2 p-1 border-dark">Finish Rent</th>
+                <th className="border border-2 p-1 border-dark">Price</th>
+                <th className="border border-2 p-1 border-dark">Category</th>
+              </tr>
+            </thead>
 
-            {pagination.map((value) => (
+            {pag.map((value) => (
               <tr className="border border-2 p-1">
                 <td className="border border-2 px-3 border-dark">{value.id}</td>
                 <td className="border border-2 px-3 border-dark">
@@ -77,11 +77,13 @@ const Tabel = () => {
           <div className="float-start">
             <label>Limit:</label>
             <br />
-            <select className="btn"
+            <select
+              className="btn"
               style={{ background: "white", color: "black" }}
-              onChange={(e) => handleChange(e.target.value)}>
-              <option value="5">5</option>
+              onChange={(e) => handleChange(e.target.value)}
+            >
               <option value="10">10</option>
+              <option value="5">5</option>
             </select>
           </div>
           <nav className="float-end mt-3">
